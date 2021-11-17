@@ -7,12 +7,14 @@ let closeTrees = document.getElementById('background4');
 let distantTrees = document.getElementById('background3');
 let clouds = document.getElementById('background2');
 
+move();
+
+
 // listen to key press and add key to array (only if it doesn't exist already)
 document.addEventListener('keydown', function (event) {
     if (event.key && !keys.includes(event.key)) {
         keys.push(event.key);
         console.log(keys);
-        move();
         checkInput();
     }
 });
@@ -25,7 +27,6 @@ document.addEventListener('keyup', function (event) {
             keys.splice(index, 1);
         }
     }
-    move();
     checkInput();
 });
 
@@ -33,7 +34,6 @@ function move() {
     if (keys.includes('ArrowRight')) {
         x -= 1;
         player.style.transform = 'scaleX(1)';
-        ground.style.backgroundPositionX = 4 * x + "px";
     }
     if (keys.includes('ArrowLeft')) {
         x += 1;
