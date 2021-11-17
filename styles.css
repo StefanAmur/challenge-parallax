@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#background1 {
+  background-image: url(./img/11_background.png);
+  background-position: 0 90%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+#background2 {
+  background-image: url(./img/08_clouds.png);
+  transform: scale(1);
+  background-position: 0 115.5%;
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: 0;
+  z-index: 2;
+}
+
+#background3 {
+  background-image: url(./img/03_distant_trees.png);
+  background-position: 0 390%;
+  background-size: 900px;
+  position: absolute;
+  width: 100%;
+  height: 495px;
+  top: 21.2px;
+  z-index: 3;
+}
+
+#background4 {
+  background-image: url(./img/02_trees\ and\ bushes.png);
+  background-position: -74px 37%;
+  background-size: 1370px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 140px;
+  z-index: 4;
+}
+
+#background5 {
+  background-image: url(./img/01_ground.png);
+  background-position: 0 89.2%;
+  position: absolute;
+  width: 100%;
+  height: 140px;
+  bottom: 0;
+  z-index: 5;
+}
+
+#player {
+  background-image: url(./img/idle.gif);
+  background-size: cover;
+  width: 69px; /* *insert noice meme */
+  height: 120px;
+  position: absolute;
+  bottom: 127px;
+  left: 50vw;
+  z-index: 6;
+}
