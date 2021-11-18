@@ -69,3 +69,14 @@
   left: 50vw;
   z-index: 6;
 }
+
+#obstacle {
+  border: 2px solid green;
+  background-color: green;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  bottom: 137px;
+  left: 30%;
+  z-index: 7;
+}
