@@ -11,14 +11,12 @@ let distantTrees = document.getElementById('background3');
 let clouds = document.getElementById('background2');
 let obstacle = document.getElementById('obstacle');
 
-move();
-jump();
+gamer();
 
 // listen to key press and add key to array (only if it doesn't exist already)
 document.addEventListener('keydown', function (event) {
     if (event.key && !keys.includes(event.key)) {
         keys.push(event.key);
-        checkInput();
     }
 });
 
@@ -30,7 +28,6 @@ document.addEventListener('keyup', function (event) {
             keys.splice(index, 1);
         }
     }
-    checkInput();
 });
 
 function move() {
@@ -49,7 +46,6 @@ function move() {
     closeTrees.style.backgroundPositionX = 3 * x + "px";
     distantTrees.style.backgroundPositionX = 2 * x + "px";
     clouds.style.backgroundPositionX = x + "px";
-    setTimeout(move, tic);
 }
 
 function checkInput() {
@@ -60,7 +56,6 @@ function checkInput() {
     } else {
         player.style.backgroundImage = 'url(./img/idle.gif)';
     }
-    setTimeout(checkInput, tic);
 }
 
 function jump() {
@@ -72,5 +67,11 @@ function jump() {
         player.style.bottom = playerY + 'px';
         player.style.transition = 'bottom 0.5s';
     }
-    setTimeout(jump, tic);
+}
+
+function gamer() {
+    move();
+    jump();
+    checkInput();
+    setTimeout(gamer, tic);
 }
