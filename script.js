@@ -12,12 +12,10 @@ let clouds = document.getElementById('background2');
 move();
 jump();
 
-
 // listen to key press and add key to array (only if it doesn't exist already)
 document.addEventListener('keydown', function (event) {
     if (event.key && !keys.includes(event.key)) {
         keys.push(event.key);
-        console.log(keys);
         checkInput();
     }
 });
@@ -42,6 +40,9 @@ function move() {
         x += 1;
         player.style.transform = 'scaleX(-1)';
     }
+    if (keys.includes('ArrowUp')) {
+        player.style.backgroundImage = 'url(./img/jump.gif)';
+    }
     ground.style.backgroundPositionX = 4 * x + "px";
     closeTrees.style.backgroundPositionX = 3 * x + "px";
     distantTrees.style.backgroundPositionX = 2 * x + "px";
@@ -50,18 +51,27 @@ function move() {
 }
 
 function checkInput() {
-    if (keys.length != 0) {
+    if (keys.length != 0 && (keys.includes('ArrowLeft') || keys.includes('ArrowRight')) && !keys.includes('ArrowUp')) {
         player.style.backgroundImage = 'url(./img/run.gif)';
+        console.log('left or right');
+    } else if (keys.includes('ArrowUp')) {
+        player.style.backgroundImage = 'url(./img/jump.gif)';
+        console.log('space');
     } else {
         player.style.backgroundImage = 'url(./img/idle.gif)';
     }
+    setTimeout(checkInput, tic);
 }
 
 function jump() {
     if (keys.includes('ArrowUp')) {
+        console.log('jump func triggered');
+        player.style.backgroundImage = 'url(./img/jump.gif)';
         player.style.bottom = playerY + jumpValue + 'px';
-    } else
+        player.style.transition = 'bottom 0.5s';
+    } else if (!keys.includes('ArrowUp')) {
         player.style.bottom = playerY + 'px';
-
+        player.style.transition = 'bottom 0';
+    }
     setTimeout(jump, tic);
 }
