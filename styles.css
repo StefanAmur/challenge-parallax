@@ -59,11 +59,13 @@
 
 #player {
   background-image: url(./img/idle.gif);
-  background-size: cover;
-  width: 79px;
+  background-size: 140px;
+  background-repeat: no-repeat;
+  background-position: 0px 1.8px;
+  width: 90px;
   height: 120px;
   position: absolute;
-  bottom: 127px;
+  bottom: 137px;
   left: 50vw;
   z-index: 6;
 }

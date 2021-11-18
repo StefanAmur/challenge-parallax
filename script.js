@@ -1,6 +1,8 @@
 let keys = [];
 let tic = 20;
 let x = 0;
+let playerY = 137;
+let jumpValue = 80;
 let player = document.getElementById('player');
 let ground = document.getElementById('background5');
 let closeTrees = document.getElementById('background4');
@@ -8,6 +10,7 @@ let distantTrees = document.getElementById('background3');
 let clouds = document.getElementById('background2');
 
 move();
+jump();
 
 
 // listen to key press and add key to array (only if it doesn't exist already)
@@ -52,4 +55,13 @@ function checkInput() {
     } else {
         player.style.backgroundImage = 'url(./img/idle.gif)';
     }
+}
+
+function jump() {
+    if (keys.includes('ArrowUp')) {
+        player.style.bottom = playerY + jumpValue + 'px';
+    } else
+        player.style.bottom = playerY + 'px';
+
+    setTimeout(jump, tic);
 }
