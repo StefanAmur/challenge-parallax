@@ -10,6 +10,9 @@ let closeTrees = document.getElementById('background4');
 let distantTrees = document.getElementById('background3');
 let clouds = document.getElementById('background2');
 let obstacle = document.getElementById('obstacle');
+let playerLeft = window.getComputedStyle(player).getPropertyValue('left');
+let playerLeftInt = parseInt(playerLeft.slice(0, playerLeft.length - 2));
+let collisionCheckRange = 2;
 
 gamer();
 
@@ -69,9 +72,24 @@ function jump() {
     }
 }
 
+function checkCollision() {
+    let obstacleLeft = window.getComputedStyle(obstacle).getPropertyValue('left');
+    let obstacleRight = window.getComputedStyle(obstacle).getPropertyValue('right');
+    let obstacleRightInt = parseInt(obstacleRight.slice(0, obstacleRight.length - 2));
+    let obstacleTop = window.getComputedStyle(obstacle).getPropertyValue('top');
+    let obstacleTopInt = parseInt(obstacleTop.slice(0, obstacleTop.length - 2));
+    if
+        (obstacleRightInt >= (playerLeftInt - collisionCheckRange)
+        && obstacleRightInt <= (playerLeftInt + collisionCheckRange)) {
+        console.log('collision');
+    }
+}
+
+
 function gamer() {
     move();
     jump();
     checkInput();
+    checkCollision();
     setTimeout(gamer, tic);
 }
