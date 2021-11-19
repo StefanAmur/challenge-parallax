@@ -10,9 +10,19 @@ let closeTrees = document.getElementById('background4');
 let distantTrees = document.getElementById('background3');
 let clouds = document.getElementById('background2');
 let obstacle = document.getElementById('obstacle');
+let obstacleHeight = 30;
 let playerLeft = window.getComputedStyle(player).getPropertyValue('left');
 let playerLeftInt = parseInt(playerLeft.slice(0, playerLeft.length - 2));
+let playerRight = window.getComputedStyle(player).getPropertyValue('right');
+let playerRightInt = parseInt(playerRight.slice(0, playerRight.length - 2));
+console.log(playerRightInt);
+let obstacleTop = window.getComputedStyle(obstacle).getPropertyValue('bottom');
+let obstacleTopInt = parseInt(obstacleTop.slice(0, obstacleTop.length - 2)) + obstacleHeight;
 let collisionCheckRange = 2;
+
+
+let playerBottom = window.getComputedStyle(player).getPropertyValue('bottom');
+let playerBottomInt = parseInt(playerBottom.slice(0, playerBottom.length - 2));
 
 gamer();
 
@@ -74,17 +84,18 @@ function jump() {
 
 function checkCollision() {
     let obstacleLeft = window.getComputedStyle(obstacle).getPropertyValue('left');
+    let obstacleLeftInt = parseInt(obstacleLeft.slice(0, obstacleLeft.length - 2));
     let obstacleRight = window.getComputedStyle(obstacle).getPropertyValue('right');
     let obstacleRightInt = parseInt(obstacleRight.slice(0, obstacleRight.length - 2));
-    let obstacleTop = window.getComputedStyle(obstacle).getPropertyValue('top');
-    let obstacleTopInt = parseInt(obstacleTop.slice(0, obstacleTop.length - 2));
-    if
-        (obstacleRightInt >= (playerLeftInt - collisionCheckRange)
-        && obstacleRightInt <= (playerLeftInt + collisionCheckRange)) {
+    let playerBottom = window.getComputedStyle(player).getPropertyValue('bottom');
+    let playerBottomInt = parseInt(playerBottom.slice(0, playerBottom.length - 2));
+
+    if (obstacleRightInt >= (playerLeftInt - collisionCheckRange)
+        && obstacleRightInt <= (playerLeftInt + collisionCheckRange)
+        && playerBottomInt <= obstacleTopInt) {
         console.log('collision');
     }
 }
-
 
 function gamer() {
     move();

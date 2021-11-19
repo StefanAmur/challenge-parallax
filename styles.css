@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 #background1 {
   background-image: url(./img/11_background.png);
   background-position: 0 90%;
